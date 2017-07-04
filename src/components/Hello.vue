@@ -1,55 +1,44 @@
-<template lang="pug">
-  .hello
-    h1 {{ msg }}
-    h2 Essential Links
-    ul
-      li
-        a(href='https://vuejs.org', target='_blank') Core Docs
-      li
-        a(href='https://forum.vuejs.org', target='_blank') Forum
-      li
-        a(href='https://gitter.im/vuejs/vue', target='_blank') Gitter Chat
-      li
-        a(href='https://twitter.com/vuejs', target='_blank') Twitter
-      br
-      li
-        a(href='http://vuejs-templates.github.io/webpack/', target='_blank') Docs for This Template
-    h2 Ecosystem
-    ul
-      li
-        a(href='http://router.vuejs.org/', target='_blank') vue-router
-      li
-        a(href='http://vuex.vuejs.org/', target='_blank') vuex
-      li
-        a(href='http://vue-loader.vuejs.org/', target='_blank') vue-loader
-      li
-        a(href='https://github.com/vuejs/awesome-vue', target='_blank') awesome-vue
+<template lang='pug'>
+.hello
+  //- 新增動態資料
+  h2 {{ hello }}
+  p Esther says: {{ hello }}
+  //- 將 hello 綁定 input 動態資料，讓資料可動態更動
+  input(type='text', v-model='hello')
+  p
+  //- 將 toggle 綁定 checkbox 布林值
+  input(type='checkbox', v-model='toggle')
+  |  Checkbox:  {{ toggle }}
+  p
+  //- 進階：將 multi 綁定 radio
+  input(type='radio', name='multi', value='male', checked='', v-model='multi')
+  |  Male 
+  input(type='radio', name='multi', value='female', v-model='multi')
+  |  Female 
+  input(type='radio', name='multi', value='other', v-model='multi')
+  |  Other
+  p Gender: {{ multi }}
+
 </template>
 
 <script>
 export default {
-  name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      // 新增數據
+      hello: 'Hello!',
+      // 新增 checkbox
+      toggle: false,
+      // 新增 radio
+      multi: 'male',
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="sass">
-h1, h2
-  font-weight: normal
-
-ul
-  list-style-type: none
-  padding: 0
-
-li
-  display: inline-block
-  margin: 0 10px
-
-a
-  color: #42b983
+<style lang='sass'>
+body
+  margin: 0
+  font-size: 14px
+  font-family: Arial
 </style>

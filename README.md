@@ -22,13 +22,16 @@ npm i
 Extra: pug + scss
 
 ``` bash
-# pug loader & filter
+# install pug loader & filter
 npm install pug pug-loader pug-filters -D
-# jage loader
+# install jage loader
 npm install jade jade-loader -D
-# sass loader
+# install sass loader
 npm install sass sass-loader node-sass -D
 ```
+
+> Reference  
+> [vue+webpack+scss+jade(pug)的环境搭建](https://segmentfault.com/a/1190000007556806)
 
 #### 03 Hello World & 雙向綁定
 
@@ -48,3 +51,16 @@ export default {
   }
 }
 ```
+
+#### 04 使用 vue-router 建構 Single Page Application
+
+新增 vue-router 用於頁面切換
+
+``` bash
+# install vue-router
+npm install vue-router --save-dev
+```
+
+> Reference  
+> [Single Page Application (SPA)](http://blog.mokayo.com/single-page-application-spa/)  
+> [前端小字典三十天【每日一字】– SPA](http://ithelp.ithome.com.tw/articles/10160709)

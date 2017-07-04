@@ -1,15 +1,38 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import VueRouter from 'vue-router'
 
-Vue.config.productionTip = false
+// init
+Vue.use(VueRouter)
 
-/* eslint-disable no-new */
+// pages
+import Hello from './pages/Hello.vue';
+import CtoF from './pages/C2F.vue';
+import App from './App.vue';
+
+const router = new VueRouter({
+  // 使用 HTML 5 模式
+  mode: 'history',
+  base: __dirname,
+  // routre 表
+  routes: [
+    {
+      path: '/hello',
+      name: 'hello',
+      component: Hello
+    },
+    {
+      path: '/c2f',
+      name: 'c2f',
+      component: CtoF
+    },
+    // router 轉址
+    { path: '/*', redirect: '/hello' }
+  ]
+});
+
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: { App }
-})
+  // app.vue 掛載並 replace index.html 原始掛載點： <div id="app"></div>
+  render: h => h( App )
+});

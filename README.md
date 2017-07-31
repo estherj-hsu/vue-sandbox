@@ -96,3 +96,37 @@ export default {
 
 > Reference
 > [第四节：定义一个vue实例的4个常用选项](https://freewechat.com/a/MzA3MDg1NzQyNA==/2649654423/1)
+
+#### 06 攝氏轉換華氏工具 - II (v-if, v-show, methods)
+
+v-if （大範圍） / v-show（小範圍）
+
+| DOM | v-if | v-show |
+| :-: | :-: | :-: |
+| true | Y | Y |
+| false  | Y | N |
+| CSS  | display | visibility |
+
+``` js
+  p(v-if='isC') 華氏：{{ fahrenheit | toInt }} °F
+  p(v-if='!isC') 攝氏：{{ celsius | toInt }} °C
+  span(v-show='isC') 攝氏：
+  span(v-show='!isC') 華氏：
+```
+
+methods 函式庫
+
+``` js
+export default {
+  methods: {
+    temperatureConversio ( val ) {
+      if ( this.isC ) {
+        alert('攝氏: ' + this.celsius );
+      }
+      else {
+        alert('華氏: ' + this.fahrenheit );
+      }
+    }
+  }
+}
+```

@@ -30,7 +30,7 @@ npm install jade jade-loader -D
 npm install sass sass-loader node-sass -D
 ```
 
-> Reference  
+> Reference
 > [vue+webpack+scss+jade(pug)的环境搭建](https://segmentfault.com/a/1190000007556806)
 
 #### 03 Hello World & 雙向綁定
@@ -61,6 +61,38 @@ export default {
 npm install vue-router --save-dev
 ```
 
-> Reference  
-> [Single Page Application (SPA)](http://blog.mokayo.com/single-page-application-spa/)  
+> Reference
+> [Single Page Application (SPA)](http://blog.mokayo.com/single-page-application-spa/)
 > [前端小字典三十天【每日一字】– SPA](http://ithelp.ithome.com.tw/articles/10160709)
+
+
+### 2017/07/31
+
+#### 05 攝氏轉換華氏工具 - I (computed)
+
+data 數值計算
+
+``` js
+export default {
+  computed: {
+    fahrenheit () {
+      return this.celsius * 9/5 + 32;
+    }
+  }
+}
+```
+過濾器
+
+``` js
+export default {
+  filters:{
+    toInt(value){
+      // 取整數
+      return parseInt(value);
+    }
+  }
+}
+```
+
+> Reference
+> [第四节：定义一个vue实例的4个常用选项](https://freewechat.com/a/MzA3MDg1NzQyNA==/2649654423/1)

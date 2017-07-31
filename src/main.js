@@ -10,10 +10,10 @@ import CtoF from './pages/C2F.vue';
 import App from './App.vue';
 
 const router = new VueRouter({
-  // 使用 HTML 5 模式
+  // HTML 5 模式（網址改變頁面不刷新）
   mode: 'history',
   base: __dirname,
-  // routre 表
+  // routre 清單
   routes: [
     {
       path: '/hello',
@@ -25,7 +25,7 @@ const router = new VueRouter({
       name: 'c2f',
       component: CtoF
     },
-    // router 轉址
+    // router 自動轉址
     { path: '/*', redirect: '/hello' }
   ]
 });

@@ -35,10 +35,7 @@ export default {
   }
 }
 </script>
-
-<style lang='sass'>
-body
-  margin: 0
-  font-size: 14px
-  font-family: Arial
+<style scoped lang='sass'>
+.hello
+  text-align: center
 </style>

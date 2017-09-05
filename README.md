@@ -130,3 +130,112 @@ export default {
   }
 }
 ```
+
+### 2017/09/05
+
+#### 07-09 component / props / v-for / slot
+
+重新調整資料夾結構：
+
+``` bash
+├─static
+│  ├─css
+│  │  └─bootstrap.css
+│  └─images
+│     └─myImage.png
+```
+
+元件拆解並引入個頁面重複利用：
+ 1. 新增 component: anno 與 testContent
+ 2. 新增 page: bootstrapPage
+ 3. 新增 bootstrapPage router
+ 4. 於 bootstrapPage 內宣告 components 並引用
+
+ ``` bash
+#畫面呈現
+<anno />
+<testContent :cards="cards" />
+
+#引入元件
+import anno from '../components/anno.vue';
+import testContent from '../components/testContent.vue';
+
+#宣告元件
+export default {
+  components: {
+    anno,
+    testContent
+  }
+}
+```
+
+自動撈取 data 內資料，自動以 for 逐筆帶入內容：
+``` bash
+#跑 for 撈取 cards 資料
+.col-md-4(v-for="card in cards")
+  h2 {{ card.title }}
+  p {{ card.info }}
+  p
+    a.btn.btn-default(:href="card.url" role="button") {{ card.btntext }}
+
+#新增 data
+export default {
+  data (){
+    return {
+      cards: [
+        {
+          title: 'Heading1',
+          info: 'information',
+          btntext: 'View details »',
+          url: '#1'
+        },
+        {
+          title: 'Heading2',
+          info: 'information',
+          btntext: 'View details »',
+          url: '#2'
+        },
+        {
+          title: 'Heading3',
+          info: 'information',
+          btntext: 'View details »',
+          url: '#3'
+        }
+      ]
+    }
+  }
+}
+```
+
+調整資料位置，改由 page 傳送至 component：
+
+``` bash
+# component 內新增 props
+export default {
+  // 新增 props 接收傳來的資料
+  props: {
+    cards: Array
+  }
+}
+
+# page 於引入 componemt 處增加資料接口
+<testContent :cards="cards" />
+```
+
+##### slot
+
+讓我卡關很久的 slot，作者舉的例子讓我有點混淆，後來發現預設的 slot 其實就是預設內容或是無內容時呈現的內容，類似搜尋無結果時顯示的內容。
+若為特定的 slot 則可用在針對不同 page 中，引入 component 的特定內容。
+
+``` bash
+# component 內新增 default/named slot
+slot
+  h1 Default Slot Content
+slot(name="namedSlot")
+  h1 Named Slot Content
+
+# page 內 component 中若有內容時，不顯示 default slot，但若有引入特定 slot 時，則會顯示該 slot 內容。
+anno(slot="namedSlot")
+  p If there is content, then no slot.
+
+```

@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 // pages
 import Hello from './pages/Hello.vue';
 import CtoF from './pages/C2F.vue';
+import bootstrapPage from './pages/bootstrapPage.vue';
 import App from './App.vue';
 
 const router = new VueRouter({
@@ -24,6 +25,11 @@ const router = new VueRouter({
       path: '/c2f',
       name: 'c2f',
       component: CtoF
+    },
+    {
+      path: '/bootstrapPage',
+      name: 'bootstrapPage',
+      component: bootstrapPage
     },
     // router 自動轉址
     { path: '/*', redirect: '/hello' }
